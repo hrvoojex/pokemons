@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+
+  }
+
+.red-text {
+  color: red;
+}
+
+.title {
+  text-align: center;
+}
+
+.td-type {
+    border-left: 1px solid grey !important; 
+    border-right: 1px solid grey !important; 
+    border-top: 1px solid grey !important; 
+    padding: 0px !important;
+}
+
+.td-weight {
+    border-left: 1px solid grey !important; 
+    border-right: 1px solid grey !important; 
+    padding: 0px !important;
+}
+
+.td-signature-ability {
+    border-left: 1px solid grey !important; 
+    border-right: 1px solid grey !important; 
+    border-bottom: 1px solid grey !important; 
+    padding: 0px !important;
+}

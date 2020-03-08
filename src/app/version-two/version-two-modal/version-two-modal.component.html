@@ -1,0 +1,43 @@
+<h2 class="title">
+    Pokemon details: {{ name }}
+</h2>
+<table class="table">
+    <tr>
+        <td class="td-type">Type</td>
+        <td class="td-type">
+            <span *ngFor="let value of type; let last = last">
+                <span>{{value.type.name}}</span><span *ngIf="!last">, </span>
+            </span>
+        </td>
+        <!-- -->
+    </tr>
+    <tr>
+        <td class="td-weight">Weight</td>
+        <td class="td-weight">
+            <span>{{weight}}</span>
+        </td>
+        <!-- -->
+    </tr>
+    <tr>
+        <td class="td-weight">Height</td>
+        <td class="td-weight">
+            <span>{{height}}</span>
+        </td>
+        <!-- -->
+    </tr>
+    <tr>
+        <td class="td-signature-ability">Signature Ability</td>
+        <td class="td-signature-ability">
+            <span *ngFor="let value of signatureAbility; let last = last">
+                <span>{{value.ability.name}}</span><span *ngIf="!last">, </span>
+            </span>
+        </td>
+        <!-- -->
+    </tr>
+    
+</table>
+<br />
+<br />
+<div style="text-align: right">
+    <button  mat-button (click)="onClose()">Close</button>
+</div>

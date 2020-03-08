@@ -1,0 +1,47 @@
+<h1 class="title">
+    {{title}}
+</h1>
+
+<div>
+    <div class="div-search-boxes">
+        <mat-form-field style="padding-right: 10px" appearance="outline">
+            <input matInput [(ngModel)]="searchName" name="name" placeholder="Name"
+            (keyup)="applyFilter($event.target.value)">
+        </mat-form-field>
+    </div>
+
+    <div class="div-search-boxes red-text" *ngIf="errorMessage != ''"> {{ errorMessage }} </div>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Details Column -->
+            <ng-container matColumnDef="details">
+                <th mat-header-cell *matHeaderCellDef> Details </th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button (click)="openDetailsModal(row)"><mat-icon>search</mat-icon></button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <mat-paginator 
+        [length]="countPokemons" 
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="nextPage($event)"
+        showFirstLastButtons>
+    </mat-paginator>
+    <br />
+    <div style="text-align: center;">{{ noDataMessage }}</div>
