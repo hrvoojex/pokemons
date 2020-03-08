@@ -23,8 +23,8 @@
             <span>{{weight}}</span>
         </td>
         <!-- -->
-        <td class="td-type">Double Damage From:</td>
-        <td class="td-type">
+        <td class="td-weight">Double Damage From:</td>
+        <td class="td-weight">
             <span *ngFor="let value of doubleDamageFrom; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
@@ -36,8 +36,8 @@
             <span>{{height}}</span>
         </td>
         <!-- -->
-        <td class="td-type">Half Damage To:</td>
-        <td class="td-type">
+        <td class="td-weight">Half Damage To:</td>
+        <td class="td-weight">
             <span *ngFor="let value of halfDamageTo; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
@@ -51,9 +51,32 @@
             </span>
         </td>
         <!-- -->
-        <td class="td-type">Half Damage From:</td>
-        <td class="td-type">
+        <td class="td-weight">Half Damage From:</td>
+        <td class="td-weight">
             <span *ngFor="let value of halfDamageFrom; let last = last">
+                <span>{{value}}</span><span *ngIf="!last">, </span>
+            </span>
+        </td>
+    </tr>
+    <!-- no damage to-->
+    <tr>
+        <td class="no-border"></td>
+        <td class="no-border"></td>
+        <!-- -->
+        <td class="td-weight">No Damage To:</td>
+        <td class="td-weight">
+            <span *ngFor="let value of noDamageTo; let last = last">
+                <span>{{value}}</span><span *ngIf="!last">, </span>
+            </span>
+        </td>
+    </tr>
+    <tr>
+        <td class="no-border"></td>
+        <td class="no-border"></td>
+        <!-- -->
+        <td class="td-signature-ability">No Damage From:</td>
+        <td class="td-signature-ability">
+            <span *ngFor="let value of noDamageFrom; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>

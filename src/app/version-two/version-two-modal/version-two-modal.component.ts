@@ -48,8 +48,6 @@ export class VersionTwoModalComponent implements OnInit {
             this.doubleDamageTo.push(element.name);
             console.log("1this.doubleDamageTo", this.doubleDamageTo);
           });
-          // this.doubleDamageTo = this.doubleDamageTo.filter((el, i, a) => i === a.indexOf(el))
-          // console.log("2this.doubleDamageTo", this.doubleDamageTo);
 
           //Double Damage From
           const ddf = response.damage_relations.double_damage_from;
@@ -77,6 +75,24 @@ export class VersionTwoModalComponent implements OnInit {
             console.log("element u hdf-u-->", element);
             this.halfDamageFrom.push(element.name);
             console.log("1this.halfDamageFrom", this.halfDamageFrom);
+          });
+
+          //No Damage To
+          const ndt = response.damage_relations.no_damage_to;
+          console.log("ndt-->", ndt)
+          ndt.forEach(element => {
+            console.log("element u ndt-u-->", element);
+            this.noDamageTo.push(element.name);
+            console.log("1this.noDamageTo", this.noDamageTo);
+          });
+
+          //No Damage From
+          const ndf = response.damage_relations.no_damage_from;
+          console.log("ndf-->", ndf)
+          ndf.forEach(element => {
+            console.log("element u ndf-u-->", element);
+            this.noDamageFrom.push(element.name);
+            console.log("1this.noDamageFrom", this.noDamageFrom);
           });
 
         });

@@ -16,12 +16,14 @@ table {
     border-right: 1px solid grey !important; 
     border-top: 1px solid grey !important; 
     padding: 0px !important;
+    text-align: center !important;
 }
 
 .td-weight {
     border-left: 1px solid grey !important; 
     border-right: 1px solid grey !important; 
     padding: 0px !important;
+    text-align: center !important;
 }
 
 .td-signature-ability {
@@ -29,4 +31,9 @@ table {
     border-right: 1px solid grey !important; 
     border-bottom: 1px solid grey !important; 
     padding: 0px !important;
+    text-align: center !important;
+}
+
+.no-border {
+    border-style: none;
 }
