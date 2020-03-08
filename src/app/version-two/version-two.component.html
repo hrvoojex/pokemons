@@ -17,7 +17,7 @@
 
             <!--- Note that these columns can be defined in any order.
                     The actual rendered columns are set as a property on the row definition" -->
-            
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -31,13 +31,13 @@
                     <button mat-icon-button (click)="openDetailsModal(row)"><mat-icon>search</mat-icon></button>
                 </td>
             </ng-container>
-            
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <mat-paginator 
-        [length]="countPokemons" 
+    <mat-paginator
+        [length]="countPokemons"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)="nextPage($event)"
@@ -45,3 +45,4 @@
     </mat-paginator>
     <br />
     <div style="text-align: center;">{{ noDataMessage }}</div>
+</div>

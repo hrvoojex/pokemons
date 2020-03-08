@@ -10,20 +10,15 @@ export class MainPageComponent implements OnInit {
   title = 'pokemon world';
 
   constructor(private router: Router) {
-   
  }
-  ngOnInit(){}
+  ngOnInit() {}
 
   onClickVersionOne() {
     this.router.navigate(['versionOne']);
-    
   }
 
   onClickVersionTwo() {
     this.router.navigate(['versionTwo']);
-    
   }
-
-  
 
 }

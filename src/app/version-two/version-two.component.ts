@@ -12,21 +12,21 @@ import { VersionTwoModalComponent } from './version-two-modal/version-two-modal.
   styleUrls: ['./version-two.component.css']
 })
 export class VersionTwoComponent implements OnInit {
-  title = "Version Two";
+  title = 'Version Two';
 
   pokemonsArray: IPokemons[] = [];
   resultSetTableArray: IPokemons[] = [];
   resultSetModalArray: IResultSetModal[] = [];
   displayedColumns: string[] = ['name', 'details'];
   dataSource: MatTableDataSource<IPokemons> = null;
-  errorMessage: string = "";
-  noDataMessage: string = "";
+  errorMessage = '';
+  noDataMessage = '';
   countPokemons: number;
   offset: number;
   limit: number;
   isFirstLoading: boolean;
   isFirstSearch: boolean;
-  searchName: string = "";
+  searchName = '';
   currentPageIndex = 0;
 
   // Za spremanje search inputa
@@ -38,7 +38,7 @@ export class VersionTwoComponent implements OnInit {
   pageEvent: PageEvent;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  constructor(public restService:PokemonsRestService, public dialog: MatDialog) { }
+  constructor(public restService: PokemonsRestService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.initVariables();
@@ -60,7 +60,7 @@ export class VersionTwoComponent implements OnInit {
       this.pokemonsArray = response.results;
       this.countPokemons = response.count;
       this.dataSource = new MatTableDataSource<IPokemons>(this.pokemonsArray);
-        if (this.isFirstLoading) { 
+      if (this.isFirstLoading) {
           this.dataSource.paginator = this.paginator;
         }
     });
@@ -73,7 +73,7 @@ export class VersionTwoComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;
     // dialogConfig.height = "350px";
-    dialogConfig.width = "80%";
+    dialogConfig.width = '80%';
     const dialog = this.dialog.open(VersionTwoModalComponent, dialogConfig);
   }
 
@@ -82,15 +82,15 @@ export class VersionTwoComponent implements OnInit {
     this.currentPageIndex = event.pageIndex;
     this.offset = this.currentPageIndex * this.limit;
 
-    if (this.searchName && this.searchName != "") {
+    if (this.searchName && this.searchName !== '') {
       return;
     }
     this.fetchPagePokemons(this.offset, this.limit);
   }
 
   filterPokemonNames(filter: string, pokemonsArray: IPokemons[]) {
-    this.noDataMessage = "";
-    let filteredArray: IPokemons[] = [];
+    this.noDataMessage = '';
+    const filteredArray: IPokemons[] = [];
     filter = filter.trim().toLowerCase();
     if (filter === '') {
       return pokemonsArray; // If filter is empty, return whole array
@@ -102,9 +102,9 @@ export class VersionTwoComponent implements OnInit {
         }
       }
     });
-    console.log("filteredArray: ", filteredArray);
+    console.log('filteredArray: ', filteredArray);
     if (filteredArray.length === 0) {
-      this.noDataMessage = "No data for pokemon " + this.searchName
+      this.noDataMessage = 'No data for pokemon ' + this.searchName;
     }
     return filteredArray;
   }
@@ -128,8 +128,7 @@ export class VersionTwoComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
       this.isFirstSearch = false;
-    }
-    else { // If it is not a first search, don't fetch again, use an old array
+    } else { // If it is not a first search, don't fetch again, use an old array
       resultArray = this.filterPokemonNames(filterValue, this.pokemonsArray);
       this.dataSource = new MatTableDataSource<IPokemons>(resultArray);
       this.dataSource.paginator = this.paginator;
