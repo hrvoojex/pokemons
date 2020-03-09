@@ -1,10 +1,3 @@
-export interface IPokemonResponse {
-    count: number;
-    next: string;
-    previous: string;
-    results: Array<INameUrl>;
-}
-
 export interface IPokemonDetailsResponse {
     name: string;
     types: Array<IType>;
