@@ -43,6 +43,9 @@
         (page)="nextPage($event)"
         showFirstLastButtons>
     </mat-paginator>
+    <mat-progress-spinner
+      style="margin:0 auto;" [mode]="'indeterminate'" *ngIf="isPageLoading">
+    </mat-progress-spinner>
     <br />
     <div style="text-align: center;">{{ noDataMessage }}</div>
 </div>

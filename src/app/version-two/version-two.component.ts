@@ -28,8 +28,9 @@ export class VersionTwoComponent implements OnInit {
   isFirstSearch: boolean;
   searchName = '';
   currentPageIndex = 0;
+  isPageLoading = true;
 
-  // Za spremanje search inputa
+  // Search input object
   filterObj: {name: string, url: string} = {name: null, url: null};
 
   // MatPaginator
@@ -65,6 +66,7 @@ export class VersionTwoComponent implements OnInit {
         }
     });
     this.isFirstLoading = false;
+    this.isPageLoading = false;
   }
 
   openDetailsModal(row: string) {
@@ -72,17 +74,18 @@ export class VersionTwoComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;
-    // dialogConfig.height = "350px";
     dialogConfig.width = '80%';
     const dialog = this.dialog.open(VersionTwoModalComponent, dialogConfig);
   }
 
   // This method is called when changing a page
   nextPage(event: PageEvent) {
+    this.isPageLoading = true;
     this.currentPageIndex = event.pageIndex;
     this.offset = this.currentPageIndex * this.limit;
 
     if (this.searchName && this.searchName !== '') {
+      this.isPageLoading = false;
       return;
     }
     this.fetchPagePokemons(this.offset, this.limit);
@@ -126,12 +129,14 @@ export class VersionTwoComponent implements OnInit {
         resultArray = this.filterPokemonNames(filterValue, this.pokemonsArray);
         this.dataSource = new MatTableDataSource<IPokemons>(resultArray);
         this.dataSource.paginator = this.paginator;
+        this.isPageLoading = false;
       });
       this.isFirstSearch = false;
     } else { // If it is not a first search, don't fetch again, use an old array
       resultArray = this.filterPokemonNames(filterValue, this.pokemonsArray);
       this.dataSource = new MatTableDataSource<IPokemons>(resultArray);
       this.dataSource.paginator = this.paginator;
+      this.isPageLoading = false;
     }
   }
 }
