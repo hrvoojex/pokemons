@@ -9,13 +9,13 @@
                 (keyup)="applyFilter($event.target.getAttribute('name'), $event.target.value.toLowerCase())"
                 (keyup.enter)="onPretraziClick()">
         </mat-form-field>
-    
+
         <mat-form-field style="padding-right: 10px" appearance="outline">
             <input matInput [(ngModel)]="searchType" name="type" placeholder="Type" [disabled]="isTypeInputDisabled"
                 (keyup)="applyFilter($event.target.getAttribute('name'), $event.target.value.toLowerCase())"
                 (keyup.enter)="onPretraziClick()">
         </mat-form-field>
-    
+
         <button mat-raised-button name="pretrazi" (click)="onPretraziClick()">Pretraži</button>
     </div>
 
@@ -26,13 +26,13 @@
 
             <!--- Note that these columns can be defined in any order.
                     The actual rendered columns are set as a property on the row definition" -->
-            
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
-            
+
             <!-- Type Column -->
             <ng-container matColumnDef="types">
                 <th mat-header-cell *matHeaderCellDef> Type </th>
@@ -64,17 +64,19 @@
                 <th mat-header-cell *matHeaderCellDef> Base Experience </th>
                 <td mat-cell *matCellDef="let element"> {{element.baseExperience}} </td>
             </ng-container>
-            
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <mat-paginator 
-        [length]="countPokemons" 
+    <mat-paginator
+        [length]="countPokemons"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)="nextPage($event)"
         showFirstLastButtons>
     </mat-paginator>
+    <mat-progress-spinner
+      style="margin:0 auto;" [mode]="'indeterminate'" *ngIf="isPageLoading">
+    </mat-progress-spinner>
 </div>
-    

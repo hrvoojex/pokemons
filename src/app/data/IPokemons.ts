@@ -2,7 +2,7 @@ export interface IPokemonResponse {
     count: number;
     next: string;
     previous: string;
-    results: Array<INameUrl>
+    results: Array<INameUrl>;
 }
 
 export interface IPokemonDetailsResponse {
@@ -32,7 +32,7 @@ export interface IPokemons {
     name: string;
     url: string;
 }
-  
+
 export interface IResultSet {
     name: string;
     types: Array<any>;

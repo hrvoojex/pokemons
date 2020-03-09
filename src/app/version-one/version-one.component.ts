@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { IPokemonDetailsResponse, IResultSet, IPokemons } from '../data/IPokemons';
+import { IResultSet, IPokemons } from '../data/IPokemons';
 import { PokemonsRestService } from '../pokemons-rest.service';
-import { BrowserStack } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'app-version-one',
@@ -18,16 +17,17 @@ export class VersionOneComponent implements OnInit {
 
   title = 'Version One';
   errorMessage = '';
+  isPageLoading = true;
 
-  // Objekt za spremanje search inputa
+  // Search input object
   filterObj: {name: string, type: string} = {name: null, type: null};
 
-  // Varijable za tablicu, paginator, inpute
+  // Variables for table, paginator, user inputs
   countPokemons: number;
   currentPageIndex = 0;
   offset = 0;
   limit = 10;
-  isFirstLoading: boolean; // Flag da li je prvi upit
+  isFirstLoading: boolean; // First time page loading flag
   isNameInputDisabled = false;
   isTypeInputDisabled = false;
   searchName: string;
@@ -53,6 +53,7 @@ export class VersionOneComponent implements OnInit {
   onPretraziClick() {
     this.isNameInputDisabled = false;
     this.isTypeInputDisabled = false;
+    this.isPageLoading = true;
 
     if (this.filterObj.name && this.filterObj.name !== '') {
       this.restService.getPokemonByName(this.filterObj.name).subscribe(response => {
@@ -70,9 +71,11 @@ export class VersionOneComponent implements OnInit {
           });
         this.dataSource = new MatTableDataSource<IResultSet>(this.resultSetArray);
         this.dataSource.paginator = this.paginator;
+        this.isPageLoading = false;
         }, error => {
             this.countPokemons = 0;
             this.dataSource = null;
+            this.isPageLoading = false;
             if (error.status === 404) {
               this.errorMessage = 'The name \'' + this.filterObj.name + '\' could not be found!';
             } else {
@@ -101,11 +104,13 @@ export class VersionOneComponent implements OnInit {
              this.dataSource = new MatTableDataSource<IResultSet>(this.resultSetArray);
              console.log(this.dataSource);
              this.dataSource.paginator = this.paginator;
+             this.isPageLoading = false;
             });
           });
         }, error => {
           this.countPokemons = 0;
           this.dataSource = null;
+          this.isPageLoading = false;
           if (error.status === 404) {
             this.errorMessage = 'The type \'' + this.filterObj.type + '\' could not be found!';
           } else {
@@ -144,8 +149,9 @@ export class VersionOneComponent implements OnInit {
     }
   }
 
-  // Metoda koja se poziva pri promjeni stranice
+  // Method for next page
   nextPage(event: PageEvent) {
+    this.isPageLoading = true;
     this.currentPageIndex = event.pageIndex;
     this.offset = this.currentPageIndex * this.limit;
     if (this.filterObj.type && this.filterObj.type !== '') {
@@ -178,5 +184,6 @@ export class VersionOneComponent implements OnInit {
       });
     });
     this.isFirstLoading = false;
+    this.isPageLoading = false;
   }
 }
