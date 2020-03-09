@@ -58,7 +58,6 @@ export class VersionTwoModalComponent implements OnInit {
             console.log('1this.doubleDamageFrom', this.doubleDamageFrom);
           });
 
-
           // Half Damage To
         const hdt = response.damage_relations.half_damage_to;
         console.log('hdt-->', hdt);
