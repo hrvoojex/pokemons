@@ -1,87 +1,87 @@
 <h2 class="title">
     Pokemon details: {{ name }}
 </h2>
-<table class="table">
-    <tr>
-        <td class="td-type">Type:</td>
-        <td class="td-type">
+<table class="mat-elevation-z8">
+    <tr class="mat-row">
+        <td>Type:</td>
+        <td>
             <span *ngFor="let value of type; let last = last">
                 <span>{{value.type.name}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
         <!-- -->
-        <td class="td-type">Double Damage To:</td>
-        <td class="td-type">
+        <td>Double Damage To:</td>
+        <td>
             <span *ngFor="let value of doubleDamageTo; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
-    <tr>
-        <td class="td-weight">Weight:</td>
-        <td class="td-weight">
+    <tr class="mat-row">
+        <td>Weight:</td>
+        <td>
             <span>{{weight}}</span>
         </td>
         <!-- -->
-        <td class="td-weight">Double Damage From:</td>
-        <td class="td-weight">
+        <td>Double Damage From:</td>
+        <td>
             <span *ngFor="let value of doubleDamageFrom; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
-    <tr>
-        <td class="td-weight">Height:</td>
-        <td class="td-weight">
+    <tr class="mat-row">
+        <td>Height:</td>
+        <td>
             <span>{{height}}</span>
         </td>
         <!-- -->
-        <td class="td-weight">Half Damage To:</td>
-        <td class="td-weight">
+        <td>Half Damage To:</td>
+        <td>
             <span *ngFor="let value of halfDamageTo; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
-    <tr>
-        <td class="td-signature-ability">Signature Ability:</td>
-        <td class="td-signature-ability">
+    <tr class="mat-row">
+        <td>Signature Ability:</td>
+        <td>
             <span *ngFor="let value of signatureAbility; let last = last">
                 <span>{{value.ability.name}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
         <!-- -->
-        <td class="td-weight">Half Damage From:</td>
-        <td class="td-weight">
+        <td>Half Damage From:</td>
+        <td>
             <span *ngFor="let value of halfDamageFrom; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
     <!-- no damage to-->
-    <tr>
-        <td class="no-border"></td>
-        <td class="no-border"></td>
+    <tr class="mat-row">
+        <td></td>
+        <td></td>
         <!-- -->
-        <td class="td-weight">No Damage To:</td>
-        <td class="td-weight">
+        <td>No Damage To:</td>
+        <td>
             <span *ngFor="let value of noDamageTo; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
-    <tr>
-        <td class="no-border"></td>
-        <td class="no-border"></td>
+    <tr class="mat-row">
+        <td></td>
+        <td></td>
         <!-- -->
-        <td class="td-signature-ability">No Damage From:</td>
-        <td class="td-signature-ability">
+        <td>No Damage From:</td>
+        <td>
             <span *ngFor="let value of noDamageFrom; let last = last">
                 <span>{{value}}</span><span *ngIf="!last">, </span>
             </span>
         </td>
     </tr>
-    
+
 </table>
 <br />
 <br />

@@ -12,24 +12,24 @@ table {
 }
 
 .td-type {
-    border-left: 1px solid grey !important; 
-    border-right: 1px solid grey !important; 
-    border-top: 1px solid grey !important; 
+    border-left: 1px solid grey !important;
+    border-right: 1px solid grey !important;
+    border-top: 1px solid grey !important;
     padding: 0px !important;
     text-align: center !important;
 }
 
 .td-weight {
-    border-left: 1px solid grey !important; 
-    border-right: 1px solid grey !important; 
+    border-left: 1px solid grey !important;
+    border-right: 1px solid grey !important;
     padding: 0px !important;
     text-align: center !important;
 }
 
 .td-signature-ability {
-    border-left: 1px solid grey !important; 
-    border-right: 1px solid grey !important; 
-    border-bottom: 1px solid grey !important; 
+    border-left: 1px solid grey !important;
+    border-right: 1px solid grey !important;
+    border-bottom: 1px solid grey !important;
     padding: 0px !important;
     text-align: center !important;
 }
@@ -37,3 +37,12 @@ table {
 .no-border {
     border-style: none;
 }
+
+.mat-row:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.mat-row:nth-child(odd) {
+  background-color:white;
+}
+
