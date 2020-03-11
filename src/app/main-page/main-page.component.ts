@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  title = 'pokemon world';
+  title = 'Pokemon world';
 
   constructor(private router: Router) {
  }
